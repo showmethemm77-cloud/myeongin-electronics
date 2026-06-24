@@ -1,0 +1,7 @@
+.agents/
+.codex/
+*.xlsx
+~$*
+.DS_Store
+Thumbs.db
+

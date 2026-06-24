@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" role="img" aria-label="Air conditioner installation consultation scene">
+  <defs>
+    <linearGradient id="wall" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7fcff"/>
+      <stop offset=".62" stop-color="#e5f6ff"/>
+      <stop offset="1" stop-color="#c7eaff"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" x2="1">
+      <stop offset="0" stop-color="#e7c69b"/>
+      <stop offset="1" stop-color="#f5dfbd"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#0b4f82" flood-opacity=".2"/>
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="760" height="430" rx="28" fill="url(#wall)"/>
+  <circle cx="135" cy="80" r="86" fill="#ffffff" opacity=".56" filter="url(#soft)"/>
+  <rect y="332" width="760" height="98" fill="url(#floor)"/>
+  <path d="M20 368h720" stroke="#d7b487" stroke-width="2" opacity=".55"/>
+  <path d="M116 332 64 430M240 332 188 430M364 332 312 430M488 332 436 430M612 332 560 430" stroke="#d7b487" stroke-width="2" opacity=".5"/>
+  <rect x="86" y="110" width="210" height="52" rx="16" fill="#fff" filter="url(#shadow)"/>
+  <rect x="108" y="135" width="132" height="8" rx="4" fill="#bfd3df"/>
+  <circle cx="262" cy="136" r="9" fill="#8eb3c9"/>
+  <path d="M340 98c70-28 152-28 222 0M366 142c52-18 116-18 168 0M386 184c38-12 82-12 120 0" fill="none" stroke="#b5dff8" stroke-width="8" stroke-linecap="round" opacity=".82"/>
+  <g filter="url(#shadow)">
+    <rect x="515" y="132" width="98" height="230" rx="26" fill="#f9fdff"/>
+    <rect x="540" y="158" width="48" height="72" rx="7" fill="#203545"/>
+    <path d="M551 174h28M551 190h28M551 206h28" stroke="#88a4b7" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="565" cy="262" r="18" fill="#f2f8fc" stroke="#c7dceb" stroke-width="3"/>
+    <path d="M544 305h42M551 324h28" stroke="#e0edf5" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <circle cx="420" cy="254" r="28" fill="#0d4773"/>
+    <rect x="386" y="282" width="70" height="78" rx="22" fill="#0b5e93"/>
+    <path d="M456 303l52-28" stroke="#0b5e93" stroke-width="18" stroke-linecap="round"/>
+    <rect x="492" y="248" width="70" height="48" rx="10" fill="#fff"/>
+    <path d="M505 265h38M505 279h25" stroke="#b9cbd8" stroke-width="5" stroke-linecap="round"/>
+    <rect x="404" y="282" width="22" height="78" fill="#1b78ad" opacity=".65"/>
+    <path d="M404 360h-14M446 360h18" stroke="#0d4773" stroke-width="18" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="144" height="144" viewBox="0 0 144 144" role="img" aria-labelledby="title desc">
+  <title id="title">명인전자 로고</title>
+  <desc id="desc">청색 방패형 심볼 안에 공조 바람 흐름과 명인전자의 초성 느낌을 담은 로고</desc>
+  <defs>
+    <linearGradient id="bg" x1="24" y1="18" x2="120" y2="126" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B83D8"/>
+      <stop offset="1" stop-color="#0B3E68"/>
+    </linearGradient>
+    <linearGradient id="line" x1="42" y1="44" x2="106" y2="99" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#D9F1FF"/>
+    </linearGradient>
+  </defs>
+  <rect x="14" y="14" width="116" height="116" rx="27" fill="url(#bg)"/>
+  <path d="M42 49h60c8 0 14 6 14 14v18c0 8-6 14-14 14H42c-8 0-14-6-14-14V63c0-8 6-14 14-14Z" fill="#FFFFFF" opacity=".14"/>
+  <path d="M45 57h54c5 0 9 4 9 9v13c0 5-4 9-9 9H45c-5 0-9-4-9-9V66c0-5 4-9 9-9Z" fill="none" stroke="url(#line)" stroke-width="7"/>
+  <path d="M50 72h43" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+  <path d="M50 88h16M79 88h14" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+  <path d="M104 55c5 8 5 26 0 34" stroke="#BFEAFF" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+  <path d="M57 106c10 7 22 7 32 0" stroke="#BFEAFF" stroke-width="5" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120" role="img" aria-labelledby="title">
+  <title id="title">LG전자</title>
+  <rect width="360" height="120" fill="#fff"/>
+  <circle cx="58" cy="60" r="38" fill="#a50034"/>
+  <circle cx="58" cy="60" r="31" fill="none" stroke="#fff" stroke-width="4"/>
+  <circle cx="48" cy="48" r="4" fill="#fff"/>
+  <path d="M58 37v37h24" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M39 38c-9 7-14 17-14 29 0 14 8 26 20 32" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <text x="112" y="77" fill="#6d6e71" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="47" font-weight="800">LG전자</text>
+</svg>
