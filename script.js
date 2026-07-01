@@ -447,7 +447,9 @@ const inquiryEmailEndpoint = "https://formsubmit.co/ajax/anckd1ehd@naver.com";
 
 if (quoteForm) {
   quoteForm.querySelectorAll("input, select, textarea").forEach((field) => {
-    field.required = true;
+    if (field.type !== "hidden") {
+      field.required = true;
+    }
   });
 
   quoteForm.addEventListener("submit", async (event) => {
@@ -524,8 +526,10 @@ if (quoteForm) {
     } catch (error) {
       console.error("Inquiry email failed", error);
       if (formStatus) {
-        formStatus.textContent = "메일 전송이 원활하지 않습니다. 메일함의 FormSubmit 인증 메일을 확인하거나 010-4511-0124로 전화 문의해주세요.";
+        formStatus.textContent = "메일 전송을 다시 시도합니다. 잠시만 기다려주세요.";
       }
+      quoteForm.submit();
+      return;
     } finally {
       if (submitButton) {
         submitButton.disabled = false;
@@ -536,6 +540,11 @@ if (quoteForm) {
 }
 
 renderInquiries();
+
+const sentParams = new URLSearchParams(window.location.search);
+if (quoteForm && sentParams.get("sent") === "1" && formStatus) {
+  formStatus.textContent = "문의가 접수되었습니다. 확인 후 빠르게 연락드리겠습니다.";
+}
 
 const quoteParams = new URLSearchParams(window.location.search);
 if (quoteForm && quoteParams.has("product")) {
