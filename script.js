@@ -505,8 +505,10 @@ if (quoteForm) {
         body: mailData
       });
 
-      if (!response.ok) {
-        throw new Error("메일 전송 실패");
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || result?.success === "false") {
+        throw new Error(result?.message || "메일 전송 실패");
       }
 
       const inquiries = [inquiry, ...getStoredInquiries()].slice(0, 50);
@@ -520,8 +522,9 @@ if (quoteForm) {
 
       document.querySelector("#quote-board")?.scrollIntoView({ behavior: "smooth", block: "start" });
     } catch (error) {
+      console.error("Inquiry email failed", error);
       if (formStatus) {
-        formStatus.textContent = "메일 전송이 원활하지 않습니다. 010-4511-0124로 전화 문의해주세요.";
+        formStatus.textContent = "메일 전송이 원활하지 않습니다. 메일함의 FormSubmit 인증 메일을 확인하거나 010-4511-0124로 전화 문의해주세요.";
       }
     } finally {
       if (submitButton) {
