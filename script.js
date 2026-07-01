@@ -443,12 +443,14 @@ function renderInquiries() {
   `).join("");
 }
 
+const inquiryEmailEndpoint = "https://formsubmit.co/ajax/anckd1ehd@naver.com";
+
 if (quoteForm) {
   quoteForm.querySelectorAll("input, select, textarea").forEach((field) => {
     field.required = true;
   });
 
-  quoteForm.addEventListener("submit", (event) => {
+  quoteForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const formData = new FormData(quoteForm);
     const phone = String(formData.get("phone") || "").trim();
@@ -472,16 +474,61 @@ if (quoteForm) {
       })
     };
 
-    const inquiries = [inquiry, ...getStoredInquiries()].slice(0, 50);
-    saveStoredInquiries(inquiries);
-    renderInquiries();
-    quoteForm.reset();
-
-    if (formStatus) {
-      formStatus.textContent = "문의글이 등록되었습니다. 확인 후 빠르게 연락드리겠습니다.";
+    const submitButton = quoteForm.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton?.textContent || "";
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "메일 전송 중...";
     }
 
-    document.querySelector("#quote-board")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (formStatus) {
+      formStatus.textContent = "문의 내용을 메일로 전송하고 있습니다.";
+    }
+
+    try {
+      const mailData = new FormData();
+      const inquiryType = inquiry.kind === "as" ? "A/S 문의" : "무료 견적 문의";
+      mailData.append("_subject", `[명인전자] ${inquiryType} - ${inquiry.name}`);
+      mailData.append("_template", "table");
+      mailData.append("_captcha", "false");
+      mailData.append("문의 구분", inquiryType);
+      mailData.append("이름", inquiry.name);
+      mailData.append("연락처", inquiry.phone);
+      mailData.append("관심 품목", inquiry.product);
+      mailData.append("설치 지역/내용", inquiry.message);
+      mailData.append("접수 시간", inquiry.createdAt);
+      mailData.append("접수 페이지", window.location.href);
+
+      const response = await fetch(inquiryEmailEndpoint, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: mailData
+      });
+
+      if (!response.ok) {
+        throw new Error("메일 전송 실패");
+      }
+
+      const inquiries = [inquiry, ...getStoredInquiries()].slice(0, 50);
+      saveStoredInquiries(inquiries);
+      renderInquiries();
+      quoteForm.reset();
+
+      if (formStatus) {
+        formStatus.textContent = "문의가 접수되었습니다. 확인 후 빠르게 연락드리겠습니다.";
+      }
+
+      document.querySelector("#quote-board")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch (error) {
+      if (formStatus) {
+        formStatus.textContent = "메일 전송이 원활하지 않습니다. 010-4511-0124로 전화 문의해주세요.";
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    }
   });
 }
 
