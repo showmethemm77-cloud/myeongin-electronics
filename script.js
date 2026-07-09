@@ -68,26 +68,13 @@ const liveInquiryItems = [
 
 const formatInquiryTime = (index) => {
   const now = new Date();
-  const elapsedMinutes = 12 + (index * 37) + (index * index * 6);
-  if (elapsedMinutes < 60) return `${elapsedMinutes}분 전`;
-
+  const elapsedMinutes = 12 + (index * 29) + ((index % 4) * 7);
   const inquiryDate = new Date(now.getTime() - (elapsedMinutes * 60 * 1000));
-  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const inquiryDay = new Date(
-    inquiryDate.getFullYear(),
-    inquiryDate.getMonth(),
-    inquiryDate.getDate()
-  );
-  const dayDifference = Math.round((today - inquiryDay) / 86400000);
-  const time = inquiryDate.toLocaleTimeString("ko-KR", {
+  return inquiryDate.toLocaleTimeString("ko-KR", {
     hour: "2-digit",
     minute: "2-digit",
-    hour12: false
+    hour12: true
   });
-
-  if (dayDifference === 0) return `오늘 ${time}`;
-  if (dayDifference === 1) return `어제 ${time}`;
-  return `${inquiryDate.getMonth() + 1}월 ${inquiryDate.getDate()}일`;
 };
 
 document.querySelectorAll("[data-inquiry-ticker-list]").forEach((list) => {
