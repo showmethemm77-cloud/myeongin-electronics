@@ -1604,33 +1604,77 @@ a {
   mix-blend-mode: multiply;
 }
 
-.trust-strip {
+.installer-banner {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  background: var(--line);
+  grid-template-columns: minmax(320px, .85fr) minmax(520px, 1.15fr);
+  align-items: stretch;
   border-bottom: 1px solid var(--line);
-}
-
-.trust-strip div {
-  padding: 26px 6vw;
   background: #fff;
 }
 
-.trust-strip strong,
-.trust-strip span {
-  display: block;
+.installer-banner-copy {
+  padding: 42px 6vw;
+  color: #fff;
+  background: #073f69;
 }
 
-.trust-strip strong {
-  font-size: 18px;
+.installer-banner-copy p {
+  margin: 0 0 12px;
+  color: #9ed8f7;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.installer-banner-copy h2 {
+  margin: 0;
+  font-size: clamp(24px, 2.1vw, 36px);
   line-height: 1.25;
 }
 
-.trust-strip span {
-  margin-top: 6px;
+.installer-banner-copy span {
+  display: block;
+  max-width: 650px;
+  margin-top: 14px;
+  color: #d7e9f3;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.installer-banner-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 0;
+  padding: 30px 5vw;
+}
+
+.installer-banner-points div {
+  min-height: 112px;
+  padding: 20px 24px;
+  border-left: 1px solid var(--line);
+}
+
+.installer-banner-points div:first-child {
+  border-left: 0;
+}
+
+.installer-banner-points strong,
+.installer-banner-points span {
+  display: block;
+}
+
+.installer-banner-points strong {
+  color: #073f69;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.installer-banner-points span {
+  margin-top: 8px;
   color: var(--muted);
   font-size: 14px;
+  line-height: 1.65;
 }
 
 .products,
@@ -3107,9 +3151,12 @@ a {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .installer-banner {
+    grid-template-columns: 1fr;
+  }
+
   .product-grid,
   .catalog-grid,
-  .trust-strip,
   .inquiry-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3343,9 +3390,28 @@ a {
     padding-inline: 18px;
   }
 
+  .installer-banner-copy {
+    padding: 34px 18px;
+  }
+
+  .installer-banner-points {
+    grid-template-columns: 1fr;
+    padding: 12px 18px 22px;
+  }
+
+  .installer-banner-points div {
+    min-height: auto;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .installer-banner-points div:first-child {
+    border-top: 0;
+  }
+
   .product-grid,
   .catalog-grid,
-  .trust-strip,
   .inquiry-list,
   .site-footer dl {
     grid-template-columns: 1fr;
@@ -3353,10 +3419,6 @@ a {
 
   .compact-products {
     grid-template-columns: 1fr;
-  }
-
-  .trust-strip div {
-    padding-inline: 18px;
   }
 
   .catalog-heading {
