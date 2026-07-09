@@ -1159,13 +1159,30 @@ a {
 }
 
 .hero-popular-track {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
-  transition: transform .5s ease-out;
 }
 
-.hero-popular-track.is-rolling {
-  transform: translateY(-76px);
+.inquiry-ticker .hero-popular-track {
+  animation: inquiryTickerScroll 100s linear infinite;
+  will-change: transform;
+}
+
+.inquiry-ticker .hero-popular-track.is-paused {
+  animation-play-state: paused;
+}
+
+.inquiry-ticker-group {
+  display: grid;
+  flex: none;
+  gap: 10px;
+}
+
+@keyframes inquiryTickerScroll {
+  to {
+    transform: translateY(calc(-50% - 5px));
+  }
 }
 
 .popular-card {

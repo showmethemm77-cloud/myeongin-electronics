@@ -67,45 +67,30 @@ const liveInquiryItems = [
 ];
 
 document.querySelectorAll("[data-inquiry-ticker-list]").forEach((list) => {
-  list.innerHTML = liveInquiryItems.map(([time, type, name, status]) => `
+  const cards = liveInquiryItems.map(([time, type, name, status]) => `
     <article class="popular-card inquiry-live-card">
       <span>${time}</span>
       <strong>${type} · ${name}</strong>
       <em>${status}</em>
     </article>
   `).join("");
+  list.innerHTML = `
+    <div class="inquiry-ticker-group">${cards}</div>
+    <div class="inquiry-ticker-group" aria-hidden="true">${cards}</div>
+  `;
 });
 
 document.querySelectorAll("[data-popular-ticker]").forEach((ticker) => {
   const track = ticker.querySelector(".hero-popular-track");
   if (!track) return;
 
-  let timerId;
-  let isPaused = false;
-
-  const rotate = () => {
-    if (isPaused || track.classList.contains("is-rolling")) return;
-    track.classList.add("is-rolling");
-  };
-
-  track.addEventListener("transitionend", () => {
-    track.appendChild(track.firstElementChild);
-    track.classList.remove("is-rolling");
-  });
-
   ticker.addEventListener("mouseenter", () => {
-    isPaused = true;
+    track.classList.add("is-paused");
   });
 
   ticker.addEventListener("mouseleave", () => {
-    isPaused = false;
+    track.classList.remove("is-paused");
   });
-
-  timerId = window.setInterval(rotate, 3000);
-
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    window.clearInterval(timerId);
-  }
 });
 
 document.querySelectorAll("[data-hero-carousel]").forEach((carousel) => {
