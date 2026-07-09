@@ -66,10 +66,16 @@ const liveInquiryItems = [
   ["49분 전", "중대형", "강동구 차*진", "현장 견적"]
 ];
 
+const formatInquiryTime = (index) => {
+  const elapsedMinutes = 12 + (index * 23) + ((index % 4) * 7);
+  if (elapsedMinutes < 60) return `${elapsedMinutes}분 전`;
+  return `${Math.floor(elapsedMinutes / 60)}시간 전`;
+};
+
 document.querySelectorAll("[data-inquiry-ticker-list]").forEach((list) => {
-  const cards = liveInquiryItems.map(([time, type, name, status]) => `
+  const cards = liveInquiryItems.map(([, type, name, status], index) => `
     <article class="popular-card inquiry-live-card">
-      <span>${time}</span>
+      <span>${formatInquiryTime(index)}</span>
       <strong>${type} · ${name}</strong>
       <em>${status}</em>
     </article>
