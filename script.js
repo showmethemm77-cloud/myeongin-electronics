@@ -414,16 +414,20 @@ function maskPhone(phone) {
 
 function renderInquiries() {
   if (!inquiryList) return;
+  const inquiryHistoryHead = document.querySelector("[data-inquiry-history-head]");
   const inquiryKind = inquiryList.dataset.inquiryKind || "as";
   const inquiries = getStoredInquiries().filter((inquiry) => {
     return inquiry.kind === inquiryKind || (!inquiry.kind && inquiryKind === "as");
   });
 
   if (!inquiries.length) {
-    inquiryList.innerHTML = '<p class="empty-inquiry">아직 등록된 문의글이 없습니다. 아래에서 첫 문의를 남겨주세요.</p>';
+    inquiryList.hidden = true;
+    if (inquiryHistoryHead) inquiryHistoryHead.hidden = true;
     return;
   }
 
+  inquiryList.hidden = false;
+  if (inquiryHistoryHead) inquiryHistoryHead.hidden = false;
   inquiryList.innerHTML = inquiries.map((inquiry) => `
     <article class="inquiry-card">
       <div class="inquiry-card-head">
