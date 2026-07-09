@@ -1606,34 +1606,62 @@ a {
 
 .installer-banner {
   display: grid;
-  grid-template-columns: minmax(320px, .85fr) minmax(520px, 1.15fr);
+  grid-template-columns: minmax(440px, .9fr) minmax(600px, 1.1fr);
   align-items: stretch;
+  overflow: hidden;
   border-bottom: 1px solid var(--line);
-  background: #fff;
+  background: #f4f9fc;
 }
 
 .installer-banner-copy {
-  padding: 42px 6vw;
+  position: relative;
+  min-height: 330px;
+  padding: 50px 15vw 50px 6vw;
+  overflow: hidden;
   color: #fff;
   background: #073f69;
 }
 
-.installer-banner-copy p {
-  margin: 0 0 12px;
-  color: #9ed8f7;
-  font-size: 13px;
+.installer-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 7px 10px;
+  color: #073f69;
+  background: #aee6ff;
+  border-radius: 4px;
+}
+
+.installer-kicker span,
+.installer-kicker strong {
+  font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
 }
 
-.installer-banner-copy h2 {
-  margin: 0;
-  font-size: clamp(24px, 2.1vw, 36px);
-  line-height: 1.25;
+.installer-kicker strong {
+  padding-left: 10px;
+  border-left: 1px solid rgba(7, 63, 105, .25);
 }
 
-.installer-banner-copy span {
-  display: block;
+.installer-banner-copy h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: clamp(27px, 2.25vw, 40px);
+  line-height: 1.23;
+  letter-spacing: 0;
+}
+
+.installer-banner-copy h2 b {
+  color: #8fddff;
+  font-weight: 900;
+}
+
+.installer-banner-copy > p {
+  position: relative;
+  z-index: 1;
   max-width: 650px;
   margin-top: 14px;
   color: #d7e9f3;
@@ -1662,6 +1690,26 @@ a {
 .installer-banner-points strong,
 .installer-banner-points span {
   display: block;
+}
+
+.installer-banner-points b {
+  display: flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 13px;
+  background: #073f69;
+  border-radius: 50%;
+}
+
+.installer-banner-points p {
+  margin: 18px 0 5px;
+  color: #18a1d6;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .installer-banner-points strong {
